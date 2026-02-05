@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Para ti ❤️</title>
+
+<style>
+body{
+  background:#fff0f6;
+  font-family: Georgia, serif;
+  text-align:center;
+  padding:40px;
+  overflow:hidden;
+}
+
+/* Animación de aparición */
+.carta{
+  max-width:700px;
+  margin:auto;
+  font-size:19px;
+  line-height:1.6;
+  opacity:0;
+  transform:translateY(20px);
+  animation:aparecer 2s ease forwards;
+}
+
+@keyframes aparecer{
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* Corazones flotando */
+.corazon{
+  position:fixed;
+  bottom:-10px;
+  font-size:20px;
+  animation:flotar linear infinite;
+}
+
+@keyframes flotar{
+  to{
+    transform:translateY(-110vh);
+    opacity:0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<h1>Mi amor 💖</h1>
+
+<div class="carta">
+Has convertido mi vida en un mar de colores sin fin,  
+mis días en veranos soleados,  
+mis noches en desvelos iluminados.
+<br><br>
+
+Definitivamente el destino nos unió y nos llevó al punto exacto en nuestra vida
+para colindar y estar juntos en este momento,  
+para formar <i>our own universe</i>  
+y en un futuro tener experiencias, momentos, lecciones  
+y muchas enseñanzas.
+<br><br>
+
+Sé que no han sido fáciles las cosas,  
+hemos tenido momentos retadores, rachas y días desgastantes,  
+pero me da paz saber que estamos aquí.  
+Nos hemos acoplado a las circunstancias, a los momentos  
+y hemos sacado adelante nuestro amor.
+<br><br>
+
+Nuestro primer 14 de febrero lejos,  
+aunque duele, estoy segura que es uno menos  
+y eso me llena el alma.
+<br><br>
+
+No quería que fuera un día más  
+y aunque no es demasiado, te pregunto:
+<br><br>
+
+<b style="font-size:21px;">
+¿Quieres ser mi San Valentín?<br>
+¿Hoy, mañana y siempre?
+</b>
+<br><br>
+
+<span style="font-size:18px;">Lov u &lt;3</span><br>
+— Sofía ❤️
+</div>
+
+<!-- Corazones generados con JS -->
+<script>
+for(let i=0;i<25;i++){
+  let h=document.createElement("div");
+  h.className="corazon";
+  h.innerHTML="💗";
+  h.style.left=Math.random()*100+"vw";
+  h.style.animationDuration=(4+Math.random()*6)+"s";
+  h.style.fontSize=(15+Math.random()*25)+"px";
+  document.body.appendChild(h);
+}
+</script>
+
+</body>
+</html>
