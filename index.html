@@ -1,11 +1,196 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Para ti ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para ti 💖</title>
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  font-family:Georgia, serif;
+  color:white;
+  overflow:hidden;
+
+  /* FOTO DE FONDO */
+  background:url("https://images.unsplash.com/photo-1518199266791-5375a83190b7")
+  center/cover no-repeat fixed;
+}
+
+/* capa difuminada */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  backdrop-filter:blur(8px) brightness(0.7);
+}
+
+/* caja */
+.box{
+  position:relative;
+  background:rgba(255,255,255,0.15);
+  padding:40px;
+  border-radius:25px;
+  backdrop-filter:blur(12px);
+  box-shadow:0 10px 40px rgba(0,0,0,0.3);
+  max-width:650px;
+  animation:fadeIn 2s ease;
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(30px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+button{
+  margin-top:20px;
+  padding:15px 25px;
+  font-size:18px;
+  border:none;
+  border-radius:12px;
+  background:#ff4da6;
+  color:white;
+  cursor:pointer;
+  transition:.3s;
+}
+button:hover{ transform:scale(1.1); }
+
+/* corazones */
+.heart{
+  position:fixed;
+  bottom:-10px;
+  font-size:20px;
+  animation:float linear infinite;
+}
+@keyframes float{
+  to{ transform:translateY(-110vh); opacity:0; }
+}
+
+/* carta */
+#carta{ display:none; line-height:1.6; }
+
+/* contador */
+#contador{
+  margin-top:15px;
+  font-size:18px;
+  opacity:.9;
+}
+</style>
 </head>
-<body style="text-align:center;font-family:Arial;background:#ffd6e7;">
-<h1>Tengo algo importante que preguntarte…</h1>
-<a href="pregunta.html" style="font-size:20px;">Haz clic aquí 💌</a>
+
+<body>
+
+<div class="box" id="inicio">
+  <h1>Tengo algo muy importante que preguntarte… 💌</h1>
+  <button onclick="mostrarPregunta()">Abrir</button>
+</div>
+
+<div class="box" id="pregunta" style="display:none;">
+  <h1>¿Quieres ser mi San Valentín? 💘</h1>
+  <button onclick="acepto()">Sí 💖</button>
+  <button id="noBtn">No 😢</button>
+</div>
+
+<div class="box" id="carta">
+  <h2>Mi amor 🥹</h2>
+
+  <p>
+  Has convertido mi vida en un mar de colores sin fin,
+  mis días en veranos soleados,
+  mis noches en desvelos iluminados.
+  <br><br>
+
+  El destino nos unió en el momento perfecto  
+  para formar <i>our own universe</i>  
+  y vivir experiencias hermosas juntos.
+  <br><br>
+
+  No ha sido fácil, pero aquí seguimos…  
+  eligiéndonos cada día.  
+  Y eso es lo más bonito que existe.
+  <br><br>
+
+  Nuestro primer 14 de febrero lejos  
+  duele… pero sé que es uno menos. 💫
+  <br><br>
+
+  <b>¿Hoy, mañana y siempre? 💘</b>
+  <br><br>
+
+  Lov u &lt;3  
+  <br>— Sofía ❤️
+  </p>
+
+  <div id="contador"></div>
+</div>
+
+<audio autoplay loop>
+  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_115b9b7c6f.mp3">
+</audio>
+
+<script>
+function mostrarPregunta(){
+  inicio.style.display="none";
+  pregunta.style.display="block";
+}
+
+/* BOTÓN NO QUE HUYE */
+noBtn.onmouseover=()=>{
+  noBtn.style.position="absolute";
+  noBtn.style.left=Math.random()*(window.innerWidth-100)+"px";
+  noBtn.style.top=Math.random()*(window.innerHeight-50)+"px";
+};
+
+/* CUANDO DICE SÍ */
+function acepto(){
+  pregunta.style.display="none";
+  carta.style.display="block";
+  lanzarFuegos();
+}
+
+/* CORAZONES */
+for(let i=0;i<35;i++){
+  let h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="💗";
+  h.style.left=Math.random()*100+"vw";
+  h.style.animationDuration=(4+Math.random()*6)+"s";
+  h.style.fontSize=(15+Math.random()*25)+"px";
+  document.body.appendChild(h);
+}
+
+/* CONTADOR — CAMBIA ESTA FECHA */
+const inicioRelacion = new Date("2024-08-01");
+
+function actualizarContador(){
+  const hoy = new Date();
+  const dias = Math.floor((hoy - inicioRelacion)/86400000);
+  contador.innerText = "Llevamos " + dias + " días juntos 💞";
+}
+setInterval(actualizarContador,1000);
+actualizarContador();
+
+/* FUEGOS ARTIFICIALES 🎆 */
+function lanzarFuegos(){
+  for(let i=0;i<25;i++){
+    let f=document.createElement("div");
+    f.innerHTML="✨";
+    f.style.position="fixed";
+    f.style.left=Math.random()*100+"vw";
+    f.style.top=Math.random()*100+"vh";
+    f.style.fontSize="30px";
+    f.style.animation="fadeOut 1.5s forwards";
+    document.body.appendChild(f);
+    setTimeout(()=>f.remove(),1500);
+  }
+}
+</script>
+
 </body>
 </html>
